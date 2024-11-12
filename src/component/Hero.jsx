@@ -1,10 +1,15 @@
 
+import Navbar from "./Navbar"
 
 const Hero = () => {
   return (
-    <div className="container">
-      
-    </div>
+    <section className="bg-red-400">
+      <Navbar />
+      <div className="container grid grid-cols-1 md:grid-cols-2 h-screen md:h-[700px] relative">
+        {/*Headdphone info*/}
+        {/*Headdphone Img*/}
+      </div>
+    </section>
   )
 }
 
