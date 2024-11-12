@@ -33,7 +33,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="hidden">
+          <div className="md:hidden">
             <MdMenu  className="text-4xl"/>
           </div>
       </div>
