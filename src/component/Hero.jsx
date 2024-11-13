@@ -22,7 +22,16 @@ const Hero = () => {
   }, [currentIndex])
 
   return (
-    <section className="bg-red-400 text-white">
+    <motion.section
+      initial={{
+        backgroundImage: `radial-gradient(circle, ${active.bgColor} 0%, ${active.bgColor} 0%)`,
+      }} 
+      animate={{
+        backgroundImage: `radial-gradient(circle, ${active.bgColor}aa 0%, ${active.bgColor} 70%)`,
+      }}
+      transition={{ duration: 0.8 }}
+      className="bg-red-400 text-white"
+    >
       <Navbar />
       <div className="container grid grid-cols-1 md:grid-cols-2 h-screen md:h-[700px] relative">
         {/*Headdphone info*/}
@@ -87,14 +96,24 @@ const Hero = () => {
               className="w-[300px] md:w-[400px] xl:w-[500px] relative z-10"
             />
           </AnimatePresence>
-          
-          <div className="text-[300px] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/5 font-poppins font-extrabold">{active.modal}</div> 
+          <AnimatePresence mode="wait">
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: easeInOut, delay: 0 }}
+            exit={{ opacity: 0 }}
+            className="text-[300px] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/5 font-poppins font-extrabold"
+          >
+            {active.modal}
+          </motion.div>
+          </AnimatePresence> 
         </div>
         <div className="absolute bottom-10 right-10 z-[999]">
           <FaMessage className="text-2xl cursor-pointer"/>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 
