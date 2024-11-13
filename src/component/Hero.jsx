@@ -25,7 +25,10 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        {/*Headdphone Img*/}
+        {/*Headphone Image section*/}
+        <div className="flex flex-col items-center justify-center order-1 md:order-2">
+            <img src={active.image} alt=""  className="w-[300px] md:w-[400px] xl:w-[500px] relative z-10"/> 
+        </div>
       </div>
     </section>
   )
