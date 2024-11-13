@@ -2,10 +2,12 @@ import { MdMenu } from "react-icons/md";
 import {NavbarData} from "../data/MockData";
 import { FaApple, FaRegUser } from "react-icons/fa";
 
+import { motion } from "framer-motion"
+
 const Navbar = () => {
   return (
     <nav className="text-white py-5">
-      <div className="container flex justify-between items-center">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="container flex justify-between items-center">
           <div className="flex items-center gap-2 text-3xl font-semibold">
             <FaApple />
             AirPods Max 
@@ -36,7 +38,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <MdMenu  className="text-4xl"/>
           </div>
-      </div>
+      </motion.div>
     </nav>
   )
 }
