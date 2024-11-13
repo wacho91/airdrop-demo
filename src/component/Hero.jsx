@@ -3,10 +3,22 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
 import Navbar from "./Navbar"
 import { FaMessage } from "react-icons/fa6"
 import { HeadphoneData } from "../data/MockData"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Hero = () => {
   const [active, setActive] = useState(HeadphoneData[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % HeadphoneData.length);
+    }, 3000);
+    return () => clearInterval(interval);  
+  },[currentIndex])
+
+  useEffect(() => {
+    setActive(HeadphoneData[currentIndex]);
+  }, [currentIndex])
+
   return (
     <section className="bg-red-400 text-white">
       <Navbar />
@@ -27,8 +39,11 @@ const Hero = () => {
         </div>
         {/*Headphone Image section*/}
         <div className="flex flex-col items-center justify-center order-1 md:order-2 relative">
-            <img src={active.image} alt=""  className="w-[300px] md:w-[400px] xl:w-[500px] relative z-10"/>
-            <div className="text-[300px] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/5 font-poppins font-extrabold">{active.modal}</div> 
+          <img src={active.image} alt=""  className="w-[300px] md:w-[400px] xl:w-[500px] relative z-10"/>
+          <div className="text-[300px] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/5 font-poppins font-extrabold">{active.modal}</div> 
+        </div>
+        <div className="absolute bottom-10 right-10 z-[999]">
+          <FaMessage className="text-2xl cursor-pointer"/>
         </div>
       </div>
     </section>
